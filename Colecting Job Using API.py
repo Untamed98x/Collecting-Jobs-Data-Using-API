@@ -2,6 +2,7 @@ import requests
 import pandas as pd
 import openpyxl
 
+# Load job data from the API
 api_url = "https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBM-DA0321EN-SkillsNetwork/labs/module%201/Accessing%20Data%20Using%20APIs/jobs.json"
 
 def get_number_of_jobs_T(technology, job_data):
@@ -50,6 +51,8 @@ df = pd.DataFrame(results, columns=columns)
 excel_filename = "job_results.xlsx"
 df.to_excel(excel_filename, index=False)
 
+print(f"Results saved to '{excel_filename}'")
+
 # Create a new workbook
 workbook = openpyxl.Workbook()
 
@@ -70,10 +73,3 @@ workbook.save(excel_filename)
 
 print(f"Workbook '{excel_filename}' created with active worksheet 'Job Results'")
 
-df = pd.DataFrame(results)
-
-excel_filename = "job_results.xlsx"
-df.to_excel(excel_filename, index=False)
-
-print(f"Results saved to '{excel_filename}'")
-df.head()
